@@ -39,35 +39,5 @@ Aquí te pongo una tablita con la variables de ambiente más importantes y para 
 
 # Viene lo bueno
 
-Para empezar a trabajar con este proyecto lo primero que tendremos que 
+> TBD
 
-<style>
-.table table {
-    width: 100%;
-}
-.table table th {
-    background-color: rgba(128,128,128,0.29);
-}
-.table table th:nth-of-type(1) {
-    width: 20%;
-}
-.table table th:nth-of-type(2) {
-    width: 80%;
-}
-
-.table-3 table {
-    width: 100%;
-}
-.table-3 table th {
-    background-color: rgba(128,128,128,0.29);
-}
-.table-3 table th:nth-of-type(1) {
-    width: 25%;
-}
-.table-3 table th:nth-of-type(2) {
-    width: 50%;
-}
-.table-3 table th:nth-of-type(3) {
-    width: 25%;
-}
-</style>
