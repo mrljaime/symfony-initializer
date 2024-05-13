@@ -17,7 +17,7 @@ if [ ! -f $UNIQUE_INSTALLATION ]; then
   composer require logger --no-interaction
   composer require symfony/orm-pack --no-interaction
   composer require --dev symfony/maker-bundle --no-interaction
-  echo "Project created with version $SYMFONY_VERSION" > $UNIQUE_INSTALLATION
+  echo "Project created with version $SYMFONY_VERSION" > INSTALLATION
 fi
 
 if [ -z "$(ls -A 'vendor/' 2>/dev/null)" ]; then
