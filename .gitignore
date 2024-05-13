@@ -1,4 +1,6 @@
 .idea/
+!.docker/php/conf.d/.gitkeep
+!.docker/php/nginx/.gitkeep
 ###> symfony/framework-bundle ###
 /.env.local
 /.env.local.php
