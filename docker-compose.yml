@@ -32,6 +32,21 @@ services:
       retries: 3
     env_file:
       - .env.compose
+  nginx:
+    image: nginx:1.19.6
+    ports:
+      - 127.0.0.1:8090:80
+    volumes:
+      - ".docker/nginx/templates:/etc/nginx/templates:delegated"
+    links:
+      - php
+    depends_on:
+      php:
+        condition: service_started
+    networks:
+      - symfony-local-dev
+    env_file:
+      - .env.compose
 
 networks:
   symfony-local-dev:
