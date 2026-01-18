@@ -48,6 +48,15 @@ services:
     env_file:
       - .env.compose
 
+  analyse:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: dev
+    volumes:
+      - ".:/opt/app"
+    command: ["composer", "analyse"]
+
 networks:
   symfony-local-dev:
 
