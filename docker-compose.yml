@@ -16,7 +16,7 @@ services:
     env_file:
       - .env.compose
   mariadb:
-    image: mariadb:10
+    image: mariadb:11
     ports:
       - 127.0.0.1:13306:3306
     volumes:
@@ -33,7 +33,7 @@ services:
     env_file:
       - .env.compose
   nginx:
-    image: nginx:1.19.6
+    image: nginx:1.27-alpine
     ports:
       - 127.0.0.1:8090:80
     volumes:

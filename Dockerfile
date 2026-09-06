@@ -1,5 +1,5 @@
 # PHP DEV
-FROM php:8.3-fpm AS dev
+FROM php:8.4-fpm AS dev
 
 RUN apt update -y && \
     apt install -y git \
