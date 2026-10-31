@@ -22,7 +22,7 @@ La idea de clonar este proyecto es que puedas ejecutar `docker compose up` y que
 
 ## Para configurar antes de arrancar
 Es necesario que le eches una ojito al archivo `.env.compose` donde se utilizan algunas variables de ambiente para
-determinar valores generales de ambiente.  
+determinar valores generales de ambiente.
 
 Aquí te pongo una tablita con la variables de ambiente más importantes y para qué sirven:
 <div class="table-3">
@@ -39,5 +39,54 @@ Aquí te pongo una tablita con la variables de ambiente más importantes y para 
 
 # Viene lo bueno
 
-> TBD
+Una vez que hayas configurado las variables de ambiente a tu gusto, con las credenciales que mejor te parezcan, 
+sólo es necesario que hagas un sólo movimiento: 
 
+```bash
+docker compose up # [-d]
+```
+> La notación de comandos entre corchetes `[-option]` suele indicar que el valor es opcional. 
+> 
+> `[-d]` es una opción disponible de docker para enviar el comando al background. Quizás lo quieras hacer siempre,
+> pero te sugiero que la primera vez no la uses para ver qué es lo que pasa mientras se instala lo necesario para
+> arrancar tu proyecto
+
+Al cabo de unos minutos, verás en la terminal donde arranques ejecutes el proyecto la primera vez algo como esto: 
+```plain
+Container test-1-mariadb-1 Healthy
+
+php-1      | Creating a "symfony/skeleton:7.4.*" project at "./tmp"
+php-1      | Installing symfony/skeleton (v7.4.99)
+php-1      | Created project in /opt/app/tmp
+php-1      | /opt/app
+php-1      | No composer.lock file present. Updating dependencies to latest instead of installing from lock file. See https://getcomposer.org/install for more information.
+###...
+php-1      | Some files have been created and/or updated to configure your new packages.
+php-1      | Please review, edit and commit them: these files are yours.
+php-1      |
+php-1      | No security vulnerability advisories found.
+php-1      | Using version ^1.68 for symfony/maker-bundle
+php-1      | [31-Oct-2026 16:48:26] NOTICE: fpm is running, pid 1
+php-1      | [31-Oct-2026 16:48:26] NOTICE: ready to handle connections
+```
+En caso que **no** sea la primera vez, la información de instalación no estará disponible en la terminal pero si verás igualmente
+algo como esto: 
+```plain
+Container test-1-mariadb-1 Healthy
+php-1      | [31-Oct-2026 16:50:51] NOTICE: fpm is running, pid 1
+php-1      | [31-Oct-2026 16:50:51] NOTICE: ready to handle connections
+```
+
+## Flujo de servicios
+
+En tanto esté listo el ambiente y tus servicios estén disponibles, puedes entrar en el navegador a la dirección `http://127.0.0.1:8090` y
+verás una pantallita como esta: 
+![img.png](docs/images/symfony-inicio.png)
+
+Nginx recibe las solicitudes HTTP y las envía a PHP. La aplicación Symfony se conecta después a MariaDB para consultar o guardar datos.
+
+```mermaid
+flowchart LR
+    nginx[Nginx] --> php["PHP-FPM<br/>(Symfony)"]
+    php -->mariadb[MariaDB]
+```
